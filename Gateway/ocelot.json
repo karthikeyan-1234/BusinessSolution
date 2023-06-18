@@ -1,0 +1,76 @@
+{
+  "Routes": [
+    //Purchase
+    {
+      "DownstreamPathTemplate": "/api/purchase/GetAllPurchases",
+      "DownStreamScheme": "https",
+      "UpstreamPathTemplate": "/Ocelot/GetAllPurchases",
+      "UpstreamHttpMethod": [ "GET", "PUT", "POST", "DELETE" ],
+      "ServiceName": "Purchase",
+      "LoadBalancerOptions": {
+
+        "Type": "RoundRobin"
+
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JWTBearerScheme",
+        "AllowedScopes": []
+      }
+    },
+
+    //Purchase
+    {
+      "DownstreamPathTemplate": "/api/purchase/AddPurchase",
+      "DownStreamScheme": "https",
+      "UpstreamPathTemplate": "/Ocelot/AddPurchase",
+      "UpstreamHttpMethod": [ "GET", "PUT", "POST", "DELETE" ],
+      "ServiceName": "Purchase",
+      "LoadBalancerOptions": {
+
+        "Type": "RoundRobin"
+
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JWTBearerScheme",
+        "AllowedScopes": []
+      }
+    },
+
+    //Login
+    {
+      "DownstreamPathTemplate": "/api/Authentication/Login",
+      "DownStreamScheme": "http",
+      "UpstreamPathTemplate": "/Ocelot/Login",
+      "UpstreamHttpMethod": [ "GET", "PUT", "POST", "DELETE" ],
+      "ServiceName": "Authenticate",
+      "LoadBalancerOptions": {
+
+        "Type": "RoundRobin"
+
+      }
+    }
+  ],
+
+  "Test": {
+    "Test1": "value1"
+  },
+  "JWT": {
+    "ValidAudience": "http://localhost:4200",
+    "ValidIssuer": "http://localhost:5172",
+    "Secret": "JWTAuthenticationHIGHsecuredPasswordVVVp1OH7Xzyr"
+  },
+  "SecurityOptions": {
+    "PrivateKeyFilePath": "Keys/private_key.xml",
+    "PublicKeyFilePath": "Keys/public_key.pem"
+  },
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7093",
+    "ServiceDiscoveryProvider": {
+      "Scheme": "http",
+      "Host": "localhost",
+      "Port": 8500,
+      "Type": "Consul",
+      "PollingInterval": 100
+    }
+  }
+}
