@@ -1,5 +1,7 @@
 using CommonLibrary;
+using CommonLibrary.Infrastructure.Consul;
 using CommonLibrary.Models.DTOs;
+using CommonLibrary.Repositories;
 
 using Consul;
 
@@ -9,8 +11,6 @@ using PurchaseAPI.Contexts;
 using PurchaseAPI.CQRS.Commands;
 using PurchaseAPI.CQRS.Handlers;
 using PurchaseAPI.CQRS.Queries;
-using PurchaseAPI.Infrastructure.Consul;
-using PurchaseAPI.Repositories;
 using PurchaseAPI.Services;
 
 using System.Net;
@@ -37,8 +37,7 @@ builder.Services.AddMediatR(cfg =>
     cfg.Lifetime = ServiceLifetime.Scoped;
 });
 
-builder.Services.AddScoped(typeof(IGenericRepo<>), typeof(PurchaseRepo<>));
-builder.Services.AddScoped<IDbContext, PurchaseDBContext>();
+builder.Services.AddScoped(typeof(IGenericRepo<,>), typeof(GenericRepo<,>));
 
 builder.Services.AddScoped<IRequestHandler<AddPurchaseCommand, PurchaseDTO>, AddPurchaseCommandHandler>();
 builder.Services.AddScoped<IRequestHandler<GetAllPurchasesQuery, IEnumerable<PurchaseDTO>>, GetAllPurchasesHandler>();

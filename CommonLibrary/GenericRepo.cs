@@ -1,15 +1,16 @@
 ﻿using CommonLibrary;
+using CommonLibrary.Models;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace PurchaseAPI.Repositories
+namespace CommonLibrary.Repositories
 {
-    public class PurchaseRepo<T> : IGenericRepo<T> where T : class
+    public class GenericRepo<T,D> : IGenericRepo<T,D> where T : BaseModel where D : DbContext
     {
-        IDbContext db;
+        D db;
         DbSet<T> table;
 
-        public PurchaseRepo(IDbContext db)
+        public GenericRepo(D db)
         {
             this.db = db;
             this.table = db.Set<T>();
@@ -17,8 +18,8 @@ namespace PurchaseAPI.Repositories
 
         public async Task<T> AddAsync(T item)
         {
-            var res = await table.AddAsync(item);
-            return res.Entity;
+           var obj = await table.AddAsync(item);
+           return obj.Entity;
         }
 
         public async Task<ICollection<T>> GetAllAsync()

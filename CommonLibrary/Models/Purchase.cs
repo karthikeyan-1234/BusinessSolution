@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CommonLibrary.Models
 {
-    public partial class Purchase
+    public partial class Purchase : BaseModel
     {
         public Purchase()
         {

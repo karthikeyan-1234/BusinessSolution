@@ -6,6 +6,7 @@ using CommonLibrary.Models.DTOs;
 
 using MediatR;
 
+using PurchaseAPI.Contexts;
 using PurchaseAPI.CQRS.Commands;
 
 
@@ -13,10 +14,10 @@ namespace PurchaseAPI.CQRS.Handlers
 {
     public class AddPurchaseCommandHandler : IRequestHandler<AddPurchaseCommand, PurchaseDTO>
     {
-        IGenericRepo<Purchase> repo;
+        IGenericRepo<Purchase,PurchaseDBContext> repo;
         IMapper mapper;
 
-        public AddPurchaseCommandHandler(IGenericRepo<Purchase> repo,IMapper mapper)
+        public AddPurchaseCommandHandler(IGenericRepo<Purchase, PurchaseDBContext> repo,IMapper mapper)
         {
             this.repo = repo;
             this.mapper = mapper;

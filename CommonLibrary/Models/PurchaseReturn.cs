@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CommonLibrary.Models
 {
-    public partial class PurchaseReturn
+    public partial class PurchaseReturn : BaseModel
     {
         public int Id { get; set; }
         public int? PurchaseId { get; set; }

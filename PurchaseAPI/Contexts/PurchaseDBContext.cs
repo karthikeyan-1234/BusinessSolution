@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace PurchaseAPI.Contexts
 {
-    public partial class PurchaseDBContext : DbContext, IPurchaseDBContext
+    public partial class PurchaseDBContext : DbContext
     {
         public PurchaseDBContext()
         {
