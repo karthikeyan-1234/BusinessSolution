@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "Gateway\Gateway.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PurchaseAPI_2", "..\PurchaseAPI\PurchaseAPI_2.csproj", "{858F6531-5EB2-471A-87EC-958BC361C183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticate", "Authenticate\Authenticate.csproj", "{D42E3D6B-0FC8-48C1-B928-D8C52A5BFE70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticate", "Authenticate\Authenticate.csproj", "{D42E3D6B-0FC8-48C1-B928-D8C52A5BFE70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryAPI", "InventoryAPI\InventoryAPI.csproj", "{D5DF6F8F-5F0B-48E4-8E6B-DE703FD6DE3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{D42E3D6B-0FC8-48C1-B928-D8C52A5BFE70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D42E3D6B-0FC8-48C1-B928-D8C52A5BFE70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D42E3D6B-0FC8-48C1-B928-D8C52A5BFE70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5DF6F8F-5F0B-48E4-8E6B-DE703FD6DE3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5DF6F8F-5F0B-48E4-8E6B-DE703FD6DE3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5DF6F8F-5F0B-48E4-8E6B-DE703FD6DE3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5DF6F8F-5F0B-48E4-8E6B-DE703FD6DE3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
