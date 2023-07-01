@@ -41,6 +41,7 @@ builder.Services.AddScoped(typeof(IGenericRepo<,>), typeof(GenericRepo<,>));
 
 builder.Services.AddScoped<IRequestHandler<AddPurchaseCommand, PurchaseDTO>, AddPurchaseCommandHandler>();
 builder.Services.AddScoped<IRequestHandler<GetAllPurchasesQuery, IEnumerable<PurchaseDTO>>, GetAllPurchasesHandler>();
+builder.Services.AddScoped<IRequestHandler<AddPurchaseDetailCommand, PurchaseDetailDTO>, AddPurchaseDetailCommandHandler>();
 
 builder.Services.AddScoped<IPurchaseService, PurchaseService>();
 
