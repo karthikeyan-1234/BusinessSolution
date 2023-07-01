@@ -30,6 +30,18 @@ namespace PurchaseAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpPost("AddPurchaseDetail", Name = "AddPurchaseDetail")]
+        public async Task<IActionResult> AddPurchaseDetail(PurchaseDetailDTO newPurchase)
+        {
+
+            var result = await service?.AddNewPurchaseDetail(newPurchase);
+
+            if (result is not null)
+                return Ok(result);
+
+            return BadRequest(result);
+        }
+
         [HttpGet("GetAllPurchases", Name = "GetAllPurchases")]
         public async Task<IActionResult> GetAllPurchases()
         {

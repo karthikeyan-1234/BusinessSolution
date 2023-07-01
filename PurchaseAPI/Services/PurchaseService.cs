@@ -3,7 +3,10 @@
 using MediatR;
 
 using PurchaseAPI.CQRS.Commands;
+using PurchaseAPI.CQRS.Notifications;
 using PurchaseAPI.CQRS.Queries;
+
+using System.Text.Json;
 
 namespace PurchaseAPI.Services
 {
@@ -28,6 +31,16 @@ namespace PurchaseAPI.Services
             var qry = new GetAllPurchasesQuery();
             var result = await mediator.Send(qry);
             return result;
+        }
+
+        public async Task<PurchaseDetailDTO> AddNewPurchaseDetail(PurchaseDetailDTO newPurchaseDetailDTO)
+        {
+            var cmd = new AddPurchaseDetailCommand(newPurchaseDetailDTO);
+            var result = await mediator.Send(cmd);
+            var msg = new PurchaseDetailAddedNotification(JsonSerializer.Serialize(result));
+            await mediator.Publish(msg);
+            return result;
+
         }
     }
 }

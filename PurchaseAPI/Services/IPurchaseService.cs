@@ -6,5 +6,6 @@ namespace PurchaseAPI.Services
     {
         Task<PurchaseDTO>? AddNewPurchaseAsync(PurchaseDTO newPurchase);
         Task<IEnumerable<PurchaseDTO>> GetAllPurchases();
+        Task<PurchaseDetailDTO> AddNewPurchaseDetail(PurchaseDetailDTO newPurchaseDetailDTO);
     }
 }
