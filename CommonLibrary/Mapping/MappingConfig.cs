@@ -17,6 +17,9 @@ namespace CommonLibrary.Mapping
         {
             CreateMap<PurchaseDTO, Purchase>();
             CreateMap<Purchase, PurchaseDTO>();
+
+            CreateMap<PurchaseDetail, PurchaseDetailDTO>();
+            CreateMap<PurchaseDetailDTO, PurchaseDetail>();
         }
     }
 }
