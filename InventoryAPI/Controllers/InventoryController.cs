@@ -2,6 +2,7 @@
 using InventoryAPI.Contexts;
 using CommonLibrary.Models;
 using CommonLibrary;
+using InventoryAPI.Services;
 
 namespace InventoryAPI.Controllers
 {
@@ -9,18 +10,17 @@ namespace InventoryAPI.Controllers
     [ApiController]
     public class InventoryController : ControllerBase
     {
-        IGenericRepo<Inventory, InventoryDBContext> repo;
+        IInventoryService service;
 
-        public InventoryController(IGenericRepo<Inventory, InventoryDBContext> repo)
+        public InventoryController(IInventoryService service)
         {
-            this.repo = repo;
+            this.service = service;
         }
 
         [HttpPost("AddInventory",Name = "AddInventory")]
         public async Task<IActionResult> AddInventoryAsync(Inventory newInventory)
         {
-            var res = await repo.AddAsync(newInventory);
-            await repo.SaveChangesAsync();
+            var res =  await service.AddNewInventory(newInventory);
             return Ok(res);
         }
     }
