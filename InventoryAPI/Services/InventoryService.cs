@@ -10,10 +10,12 @@ namespace InventoryAPI.Services
     public class InventoryService : IInventoryService
     {
         IMediator mediator;
+        ILogger<InventoryService> logger;
 
-        public InventoryService(IMediator mediator)
+        public InventoryService(IMediator mediator, ILogger<InventoryService> logger)
         {
             this.mediator = mediator;
+            this.logger = logger;
         }
 
         public async Task<Inventory> AddNewInventory(Inventory newInventory)
@@ -27,6 +29,7 @@ namespace InventoryAPI.Services
         {
             var qry = new GetAllInventoryQuery();
             var result = await mediator.Send(qry);
+            logger.LogInformation("Retrieved all inventories..");
             return result;
         }
     }

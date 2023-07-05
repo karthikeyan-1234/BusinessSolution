@@ -12,10 +12,34 @@ using MediatR;
 
 using Microsoft.EntityFrameworkCore;
 
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.Elasticsearch;
+
 var builder = WebApplication.CreateBuilder(args);
 var Configuration = builder.Configuration;
+var Environment = builder?.Environment;
 
 // Add services to the container.
+
+var logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.Elasticsearch(
+    new ElasticsearchSinkOptions(new Uri(Configuration["ElasticConfiguration:Uri"]))
+    {
+        IndexFormat = $"{Configuration["ApplicationName"]}-logs-{Environment.EnvironmentName?.ToLower().Replace(".","-")}-{DateTime.UtcNow:yyyy-MM}",
+        AutoRegisterTemplate = true,
+        NumberOfShards = 2,
+        NumberOfReplicas = 1
+    }
+    )
+    .Enrich.WithProperty("Environment",Environment?.EnvironmentName)
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich
+    .FromLogContext()
+    .CreateLogger();
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

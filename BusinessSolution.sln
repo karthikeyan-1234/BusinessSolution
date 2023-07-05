@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PurchaseAPI_2", "..\Purchas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticate", "Authenticate\Authenticate.csproj", "{D42E3D6B-0FC8-48C1-B928-D8C52A5BFE70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryAPI", "InventoryAPI\InventoryAPI.csproj", "{D5DF6F8F-5F0B-48E4-8E6B-DE703FD6DE3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryAPI", "InventoryAPI\InventoryAPI.csproj", "{D5DF6F8F-5F0B-48E4-8E6B-DE703FD6DE3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8540004F-5F19-4877-8C20-D8D0316573E0}"
+	ProjectSection(SolutionItems) = preProject
+		D:\docker-compose.yml = D:\docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
