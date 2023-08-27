@@ -36,6 +36,24 @@
       }
     },
 
+    //Purchase
+    {
+      "DownstreamPathTemplate": "/api/purchase/GetPurchaseDetail",
+      "DownStreamScheme": "https",
+      "UpstreamPathTemplate": "/Ocelot/GetPurchaseDetail",
+      "UpstreamHttpMethod": [ "GET", "PUT", "POST", "DELETE" ],
+      "ServiceName": "Purchase",
+      "LoadBalancerOptions": {
+
+        "Type": "RoundRobin"
+
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "JWTBearerScheme",
+        "AllowedScopes": []
+      }
+    },
+
     //Login
     {
       "DownstreamPathTemplate": "/api/Authentication/Login",

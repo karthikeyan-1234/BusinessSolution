@@ -31,5 +31,10 @@ namespace CommonLibrary.Repositories
         {
             await db.SaveChangesAsync();
         }
+
+        public async Task<T> GetById(object id)
+        {
+            return await table.FindAsync(id);
+        }
     }
 }

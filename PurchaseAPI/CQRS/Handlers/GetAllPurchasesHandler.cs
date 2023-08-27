@@ -9,7 +9,6 @@ using MediatR;
 using PurchaseAPI.Contexts;
 using PurchaseAPI.CQRS.Queries;
 
-
 namespace PurchaseAPI.CQRS.Handlers
 {
     public class GetAllPurchasesHandler : IRequestHandler<GetAllPurchasesQuery, IEnumerable<PurchaseDTO>>

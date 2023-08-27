@@ -15,5 +15,6 @@ namespace CommonLibrary
         Task<T> AddAsync(T item);
         Task SaveChangesAsync();
         Task<ICollection<T>> GetAllAsync();
+        Task<T> GetById(object id);
     }
 }

@@ -42,5 +42,12 @@ namespace PurchaseAPI.Services
             return result;
 
         }
+
+        public async Task<IEnumerable<PurchaseDetailDTO>> GetPurchaseDetailDTO(int purchaseID)
+        {
+            var qry = new GetPurchaseDetailByIdQuery(purchaseID);
+            var result = await mediator.Send(qry);
+            return result;
+        }
     }
 }

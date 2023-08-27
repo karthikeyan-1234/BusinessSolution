@@ -55,5 +55,16 @@ namespace PurchaseAPI.Controllers
 
             return BadRequest(result);
         }
+
+        [HttpGet("GetPurchaseDetail", Name = "GetPurchaseDetail")]
+        public async Task<IActionResult> GetPurchaseDetail(int purchaseId)
+        {
+            var result = await service.GetPurchaseDetailDTO(purchaseId);
+
+            if(result is not null)
+                return Ok(result);
+
+            return BadRequest(result);
+        }
     }
 }
