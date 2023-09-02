@@ -36,5 +36,10 @@ namespace CommonLibrary.Repositories
         {
             return await table.FindAsync(id);
         }
+
+        public ICollection<T> Find(Func<T, bool> predicate)
+        {
+            return  table.Where(predicate).ToList();
+        }
     }
 }

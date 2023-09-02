@@ -16,5 +16,6 @@ namespace CommonLibrary
         Task SaveChangesAsync();
         Task<ICollection<T>> GetAllAsync();
         Task<T> GetById(object id);
+        ICollection<T> Find(Func<T, bool> predicate);
     }
 }
